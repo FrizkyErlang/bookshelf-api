@@ -4,12 +4,12 @@ const routes = [
   {
     method: 'POST',
     path: '/books',
-    handler: () => {},
+    handler: handler.addBookHandler,
   },
   {
     method: 'GET',
     path: '/books',
-    handler: () => {},
+    handler: handler.getAllBookHandler,
   },
   {
     method: 'GET',
