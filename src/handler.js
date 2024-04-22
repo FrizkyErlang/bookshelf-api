@@ -16,10 +16,10 @@ exports.addBookHandler = (req, h) => {
   } = req.payload;
 
   // parse data
-  year = parseInt(year, 10);
-  pageCount = parseInt(pageCount, 10);
-  readPage = parseInt(readPage, 10);
-  reading = reading === 'true';
+  const yearInt = parseInt(year, 10);
+  const pageCountInt = parseInt(pageCount, 10);
+  const readPageInt = parseInt(readPage, 10);
+  const readingBool = reading === 'true';
 
   // kalau tidak ada nama di body
   if (!name) {
@@ -32,7 +32,7 @@ exports.addBookHandler = (req, h) => {
   }
 
   // kalau readPage > pageCount
-  if (readPage > pageCount) {
+  if (readPageInt > pageCountInt) {
     const response = h.response({
       status: 'fail',
       message: 'Gagal menambahkan buku. Mohon isi nama buku',
@@ -43,7 +43,7 @@ exports.addBookHandler = (req, h) => {
 
   // melengkapi objek buku
   const id = nanoid(16);
-  const finished = pageCount === readPage;
+  const finished = pageCountInt === readPageInt;
   const insertedAt = new Date().toISOString();
   const updatedAt = insertedAt;
 
@@ -51,14 +51,14 @@ exports.addBookHandler = (req, h) => {
   const newBook = {
     id,
     name,
-    year,
+    yearInt,
     author,
     summary,
     publisher,
-    pageCount,
-    readPage,
+    pageCountInt,
+    readPageInt,
     finished,
-    reading,
+    readingBool,
     insertedAt,
     updatedAt,
   };
