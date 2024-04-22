@@ -19,7 +19,7 @@ exports.addBookHandler = (req, h) => {
   year = parseInt(year, 10);
   pageCount = parseInt(pageCount, 10);
   readPage = parseInt(readPage, 10);
-  reading = reading === 'true' ? true : false;
+  reading = reading === 'true';
 
   // kalau tidak ada nama di body
   if (!name) {
@@ -42,10 +42,10 @@ exports.addBookHandler = (req, h) => {
   }
 
   // melengkapi objek buku
-  let id = nanoid(16);
-  let finished = pageCount === readPage;
-  let insertedAt = new Date().toISOString();
-  let updatedAt = insertedAt;
+  const id = nanoid(16);
+  const finished = pageCount === readPage;
+  const insertedAt = new Date().toISOString();
+  const updatedAt = insertedAt;
 
   // deklarasi data buku baru
   const newBook = {
