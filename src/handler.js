@@ -154,3 +154,30 @@ exports.getBookByIdHandler = (req, h) => {
   response.code(404);
   return response;
 };
+
+// handler untuk menghapus berdasarkan id buku
+exports.deleteBookByIdHandler = (req, h) => {
+  // mengambil id buku dari params url
+  const { id } = req.params;
+
+  // mengambil indexbuku yang sesuai id buku
+  const index = notes.findIndex((note) => note.id === id);
+
+  if (index !== -1) {
+    // menghapus buku sesuai index
+    books.splice(index, 1);
+    const response = h.response({
+      status: 'success',
+      message: 'Buku berhasil dihapus',
+    });
+    response.code(200);
+    return response;
+  }
+
+  const response = h.response({
+    status: 'fail',
+    message: 'Buku gagal dihapus. Id tidak ditemukan',
+  });
+  response.code(404);
+  return response;
+};
