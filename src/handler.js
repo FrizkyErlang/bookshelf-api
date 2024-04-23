@@ -133,7 +133,7 @@ exports.getBookByIdHandler = (req, h) => {
   const { id } = req.params;
 
   // mengambil buku yang sesuai id buku
-  const book = books.filter((book) => book.id === id)[0];
+  const book = books.filter((bookEl) => bookEl.id === id)[0];
 
   // mengirim response
   if (book !== undefined) {
@@ -161,7 +161,7 @@ exports.deleteBookByIdHandler = (req, h) => {
   const { id } = req.params;
 
   // mengambil indexbuku yang sesuai id buku
-  const index = notes.findIndex((note) => note.id === id);
+  const index = books.findIndex((book) => book.id === id);
 
   if (index !== -1) {
     // menghapus buku sesuai index
