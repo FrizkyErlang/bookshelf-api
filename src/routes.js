@@ -14,15 +14,15 @@ const routes = [
   {
     method: 'GET',
     path: '/books/{id}',
-    handler: () => {},
+    handler: handler.getBookByIdHandler,
   },
   {
-    method: 'PUT',
+    method: 'DELETE',
     path: '/books/{id}',
     handler: () => {},
   },
   {
-    method: 'DELETE',
+    method: 'PUT',
     path: '/books/{id}',
     handler: () => {},
   },
