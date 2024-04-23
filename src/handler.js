@@ -113,6 +113,12 @@ exports.getAllBookHandler = (req, h) => {
     bookData = bookData.filter((book) => book.finished === finished);
   }
 
+  bookData = bookData.map((book) => ({
+    id: book.id,
+    name: book.name,
+    publisher: book.publisher,
+  }));
+
   const response = h.response({
     status: 'success',
     data: bookData,
