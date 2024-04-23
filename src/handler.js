@@ -126,3 +126,31 @@ exports.getAllBookHandler = (req, h) => {
   response.code(200);
   return response;
 };
+
+// handler untuk mengambil detail buku berdasarkan id buku
+exports.getBookByIdHandler = (req, h) => {
+  // mengambil id buku dari params url
+  const { id } = req.params;
+
+  // mengambil buku yang sesuai id buku
+  const book = books.filter((book) => book.id === id)[0];
+
+  // mengirim response
+  if (book !== undefined) {
+    const response = h.response({
+      status: 'success',
+      data: {
+        book,
+      },
+    });
+    response.code(200);
+    return response;
+  }
+
+  const response = h.response({
+    status: 'fail',
+    message: 'Buku tidak ditemukan',
+  });
+  response.code(404);
+  return response;
+};
