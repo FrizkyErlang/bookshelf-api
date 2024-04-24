@@ -16,10 +16,8 @@ exports.addBookHandler = (req, h) => {
   } = req.payload;
 
   // parse data
-  const yearInt = parseInt(year, 10);
   const pageCountInt = parseInt(pageCount, 10);
   const readPageInt = parseInt(readPage, 10);
-  const readingBool = reading === 'true';
 
   // kalau tidak ada nama di body
   if (!name) {
@@ -135,17 +133,17 @@ exports.getBookByIdHandler = (req, h) => {
   const { id } = req.params;
 
   // mengambil buku yang sesuai id buku
-  const book = books.filter((bookEl) => bookEl.id === id)[0];
+  const bookData = books.filter((bookEl) => bookEl.id === id)[0];
 
   // mengirim response
-  if (book !== undefined) {
+  if (bookData !== undefined) {
     const response = h.response({
       status: 'success',
       data: {
-        book: book,
+        book: bookData,
       },
     });
-    console.log(book);
+
     response.code(200);
     return response;
   }
@@ -202,10 +200,8 @@ exports.editBookByIdHandler = (req, h) => {
   } = req.payload;
 
   // parse data
-  const yearInt = parseInt(year, 10);
   const pageCountInt = parseInt(pageCount, 10);
   const readPageInt = parseInt(readPage, 10);
-  const readingBool = reading === 'true';
 
   // kalau tidak ada nama di body
   if (!name) {
