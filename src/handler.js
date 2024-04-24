@@ -122,8 +122,9 @@ exports.getAllBookHandler = (req, h) => {
 
   const response = h.response({
     status: 'success',
-    data: bookData,
+    data: { books: bookData },
   });
+
   response.code(200);
   return response;
 };
@@ -141,7 +142,7 @@ exports.getBookByIdHandler = (req, h) => {
     const response = h.response({
       status: 'success',
       data: {
-        book,
+        book: book,
       },
     });
     response.code(200);
