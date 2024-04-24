@@ -52,14 +52,14 @@ exports.addBookHandler = (req, h) => {
   const newBook = {
     id,
     name,
-    yearInt,
+    year,
     author,
     summary,
     publisher,
-    pageCountInt,
-    readPageInt,
+    pageCount,
+    readPage,
     finished,
-    readingBool,
+    reading,
     insertedAt,
     updatedAt,
   };
@@ -107,11 +107,11 @@ exports.getAllBookHandler = (req, h) => {
   }
   if (reading) {
     reading = reading !== '0';
-    bookData = bookData.filter((book) => book.reading === reading);
+    bookData = bookData.filter((book) => book.reading === String(reading));
   }
   if (finished) {
     finished = finished !== '0';
-    bookData = bookData.filter((book) => book.finished === finished);
+    bookData = bookData.filter((book) => book.finished === String(finished));
   }
 
   bookData = bookData.map((book) => ({
@@ -145,6 +145,7 @@ exports.getBookByIdHandler = (req, h) => {
         book: book,
       },
     });
+    console.log(book);
     response.code(200);
     return response;
   }
@@ -239,14 +240,14 @@ exports.editBookByIdHandler = (req, h) => {
     books[index] = {
       ...books[index],
       name,
-      yearInt,
+      year,
       author,
       summary,
       publisher,
-      pageCountInt,
-      readPageInt,
+      pageCount,
+      readPage,
       finished,
-      readingBool,
+      reading,
       updatedAt,
     };
 
@@ -254,7 +255,7 @@ exports.editBookByIdHandler = (req, h) => {
       status: 'success',
       message: 'Buku berhasil diperbarui',
     });
-    response.code(200);
+
     return response;
   }
 
