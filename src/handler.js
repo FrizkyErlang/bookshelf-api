@@ -105,11 +105,11 @@ exports.getAllBookHandler = (req, h) => {
   }
   if (reading) {
     reading = reading !== '0';
-    bookData = bookData.filter((book) => book.reading === String(reading));
+    bookData = bookData.filter((book) => book.reading === reading);
   }
   if (finished) {
     finished = finished !== '0';
-    bookData = bookData.filter((book) => book.finished === String(finished));
+    bookData = bookData.filter((book) => book.finished === finished);
   }
 
   bookData = bookData.map((book) => ({
