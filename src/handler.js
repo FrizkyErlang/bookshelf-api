@@ -235,8 +235,8 @@ exports.editBookByIdHandler = (req, h) => {
 
   // edit book-nya
   if (index !== -1) {
-    notes[index] = {
-      ...notes[index],
+    books[index] = {
+      ...books[index],
       name,
       yearInt,
       author,
